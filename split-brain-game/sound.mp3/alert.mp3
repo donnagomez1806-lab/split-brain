@@ -1,0 +1,12 @@
+import ctypes
+import time
+
+def play_mp3(file_path):
+    
+    ctypes.windll.winmm.mciSendStringW(f'open "{file_path}" type mpegvideo alias my_audio', None, 0, 0)
+    
+    ctypes.windll.winmm.mciSendStringW('play my_audio', None, 0, 0)
+audio_file = r"C:\Users\D_Gomez\Desktop\split-brain-game\alert.mp3"
+play_mp3(audio_file)
+time.sleep(5) 
+ctypes.windll.winmm.mciSendStringW('close my_audio', None, 0, 0)
